@@ -1,0 +1,53 @@
+[project]
+name = "cicd-first"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Роман",email = "roman.v.antonnikov@gmail.com"}
+]
+requires-python = ">=3.11"
+dependencies = [
+    "requests (>=2.33.1,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.15.12,<0.16.0)"
+]
+
+[tool.ruff]
+target-version = "py313"
+exclude = [
+".venv",
+"venv",
+"__pycache__"
+]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+"E", # pycodestyle errors
+"W", # pycodestyle warnings
+"F", # pyflakes
+"I", # isort
+"C90", # mccabe
+"PL", # pylint
+"N", #pep8-naming
+"SIM" #flake8-simplify
+] # перечисление выбранных инструментов для проверки
+
+ignore = [
+"E501", # pycodestyle errors: слишком длинная строка
+"PLR0913", # pylint: слишком много аргументов в функции
+"W292", # pycodestyle warnings: нет пустой строки в конце файла
+]
+
+[tool.ruff.format]
+quote-style = "double" # стиль кавычек
+indent-style = "space" # стиль отступов
+docstring-code-format = true # форматировать код, содержащийся внутри документации
