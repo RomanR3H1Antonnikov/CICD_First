@@ -1,0 +1,48 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+        stages: [pre-commit]
+      - id: end-of-file-fixer
+        stages: [pre-commit]
+      - id: check-yaml
+        stages: [pre-commit]
+      - id: check-added-large-files
+        stages: [pre-commit]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.10
+    hooks:
+      - id: ruff
+        name: Ruff linter
+        entry: poetry run ruff check --fix
+        language: system
+        types: [python]
+        stages: [pre-commit]
+      - id: ruff-format
+        name: Ruff formatter
+        entry: poetry run ruff format
+        language: system
+        types: [python]
+        stages: [pre-commit]
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: Run mypy
+        entry: poetry run mypy app/
+        language: system
+        types: [python]
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: bandit
+        name: Run bandit
+        entry: poetry run bandit -c pyproject.toml -r app/
+        language: system
+        types: [python]
+        pass_filenames: false
+        stages: [pre-push]
