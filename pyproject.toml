@@ -24,10 +24,9 @@ dev = [
 target-version = "py313"
 exclude = [
 ".venv",
-"venv",
-"__pycache__"
+"venv"
 ]
-line-length = 120
+line-length = 80
 
 [tool.ruff.lint]
 select = [
@@ -41,15 +40,9 @@ select = [
 "SIM" #flake8-simplify
 ] # перечисление выбранных инструментов для проверки
 
-ignore = [
-"E501", # pycodestyle errors: слишком длинная строка
-"PLR0913", # pylint: слишком много аргументов в функции
-"W292", # pycodestyle warnings: нет пустой строки в конце файла
-]
-
 [tool.ruff.format]
 quote-style = "double" # стиль кавычек
-indent-style = "space" # стиль отступов
+indent-style = "tab" # стиль отступов
 docstring-code-format = true # форматировать код, содержащийся внутри документации
 line-ending = "auto"
 
