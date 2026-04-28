@@ -37,7 +37,8 @@ select = [
 "C90", # mccabe
 "PL", # pylint
 "N", #pep8-naming
-"SIM" #flake8-simplify
+"SIM", #flake8-simplify
+"ARG"  # flake8-unused-arguments (неиспользуемые аргументы)
 ] # перечисление выбранных инструментов для проверки
 ignore = ["W191"]  # игнорируем предупреждение о табуляциях
 
