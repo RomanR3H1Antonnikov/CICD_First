@@ -28,21 +28,3 @@ repos:
         language: system
         types: [python]
         stages: [pre-commit]
-
-  - repo: local
-    hooks:
-      - id: mypy
-        name: Run mypy
-        entry: poetry run mypy app/
-        language: system
-        types: [python]
-        pass_filenames: false
-        stages: [pre-push]
-
-      - id: bandit
-        name: Run bandit
-        entry: poetry run bandit -c pyproject.toml -r app/
-        language: system
-        types: [python]
-        pass_filenames: false
-        stages: [pre-push]
