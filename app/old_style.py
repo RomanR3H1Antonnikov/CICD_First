@@ -21,6 +21,6 @@ first_number = int(
 	input("В это поле необходимо ввести первое число. Введите число: \n")
 )
 
-sum_numbers(first_number, 0)
+sum_numbers(first_number)
 
 print("Завершение программы...")
