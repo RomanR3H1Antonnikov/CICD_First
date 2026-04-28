@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from math import pi, sqrt
 
 
-def sum_numbers(a):
+def sum_numbers(a: int) -> int:
 	second_number = int(
 		input(
 			"В это поле необходимо ввести второе число, с которым"

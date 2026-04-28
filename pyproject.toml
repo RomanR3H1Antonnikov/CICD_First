@@ -24,6 +24,9 @@ dev = [
     "pytest (>=9.0.3,<10.0.0)"
 ]
 
+[tool.poetry]
+package-mode = false
+
 [tool.ruff]
 target-version = "py313"
 exclude = [
