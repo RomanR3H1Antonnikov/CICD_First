@@ -1,10 +1,7 @@
 import requests
 
-def get_weather(city=None):
-    if city:
-        url = f"https://wttr.in/{city}?m"
-    else:
-        url = "https://wttr.in/?m"
+def get_weather(city=""):
+    url = f"https://wttr.in/{city}?m"
 
     try:
         response = requests.get(url)
@@ -17,12 +14,10 @@ def get_weather(city=None):
 
 
 if __name__ == "__main__":
-    print("Добрый день! Готовы узнать прогноз погоды? Доступные команды:")
-    print()
-    print("1. Нажмите Enter - погода для вашего местоположения")
-    print("2. Введите название города - погода для указанного города")
-    print("3. Введите 'exit' - выход из программы")
-    print()
+    print("""Добрый день! Готовы узнать прогноз погоды? Доступные команды:
+    1. Нажмите Enter - погода для вашего местоположения
+    2. Введите название города - погода для указанного города
+    3. Введите 'exit' - выход из программы""")
 
     while True:
         city = input("Введите город (или нажмите Enter): ").strip()
