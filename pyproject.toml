@@ -17,7 +17,9 @@ build-backend = "poetry.core.masonry.api"
 
 [dependency-groups]
 dev = [
-    "ruff (>=0.15.12,<0.16.0)"
+    "ruff (>=0.15.12,<0.16.0)",
+    "mypy (>=1.20.2,<2.0.0)",
+    "bandit (>=1.9.4,<2.0.0)"
 ]
 
 [tool.ruff]
@@ -55,3 +57,12 @@ combine-as-imports = true
 [tool.ruff.lint.per-file-ignores]
 "app/fix_me.py" = []
 "app/old_style.py" = ["F401"]  # чтобы не удалять неиспользуемые импорты
+
+[tool.mypy]
+python_version = "3.13"
+check_untyped_defs = true # проверяем функции, у которых не указана аннотация типов
+disallow_untyped_defs = true # запрещаем использование функций без указания аннотации типов
+ignore_missing_imports = true # игнорируем ошибки отсутствия типизации в импортируемых библиотеках
+
+[tool.bandit]
+exclude_dirs = [".venv", "venv"]
