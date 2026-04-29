@@ -57,37 +57,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.13
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-
-      - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-      - name: Install dependencies
-        run: poetry install --no-interaction
-
-      - name: Create Dockerfile
-        run: |
-          cat > Dockerfile << 'EOF'
-          FROM python:3.13-slim
-
-          WORKDIR /app
-
-          RUN pip install poetry
-
-          COPY pyproject.toml poetry.lock ./
-          RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi --no-root
-
-          COPY app/ ./app/
-          COPY tests/ ./tests/
-
-          CMD ["python", "-m", "pytest"]
-          EOF
-
       - name: Build Docker image
         run: docker build -t myapp:latest .
 
